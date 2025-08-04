@@ -17,26 +17,24 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    // Remove constructor with sample data
 
-    // Get all students
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    public Student getStudentById(Long id) throws StudentNotFoundException {
+    public Student getStudentById(Long id) {
         return studentRepository.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
-    public Student addStudent(Student student) throws DuplicateStudentException {
+    public Student addStudent(Student student) {
         if (studentRepository.findByName(student.getName()).isPresent()) {
             throw new DuplicateStudentException(student);
         }
         return studentRepository.save(student);
     }
 
-    public Student updateStudent(Long id, Student updatedStudent) throws StudentNotFoundException, DuplicateStudentException {
+    public Student updateStudent(Long id, Student updatedStudent) {
         return studentRepository.findById(id).map(existing -> {
             if (!existing.getName().equals(updatedStudent.getName()) && studentRepository.findByName(updatedStudent.getName()).isPresent()) {
                 throw new DuplicateStudentException(updatedStudent);
@@ -49,7 +47,7 @@ public class StudentService {
         }).orElseThrow(() -> new StudentNotFoundException(id));
     }
 
-    public void deleteStudent(Long id) throws StudentNotFoundException {
+    public void deleteStudent(Long id) {
         if (!studentRepository.existsById(id)) {
             throw new StudentNotFoundException(id);
         }

@@ -43,7 +43,7 @@ curl -X GET "http://localhost:8080/students"
 curl -X POST "http://localhost:8080/students" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Alice Brown",
+    "name": "Bob Wilson",
     "sex": "Female", 
     "email": "alice.brown@email.com",
     "score": 95
@@ -124,7 +124,7 @@ curl -X GET "http://localhost:8080/students/count"
 curl -X POST "http://localhost:8080/students" \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Bob Wilson",
+    "name": "New Bob Wilson",
     "sex": "Male",
     "email": "bob.wilson@email.com", 
     "score": 87
