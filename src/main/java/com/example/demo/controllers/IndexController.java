@@ -9,10 +9,6 @@ import java.math.BigDecimal;
 
 @Controller
 public class IndexController {
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
     
     @GetMapping("/cv")
     public String cv() {

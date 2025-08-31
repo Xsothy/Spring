@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+    <div class="navbar" style="background:#0d6efd;color:white;">
+        <div>
+            <a th:href="@{/}" style="margin-right:12px; color:white; font-weight:700;">StudentApp</a>
+            <a th:href="@{/}" style="margin-right:12px; color:white;">Home</a>
+            <a th:href="@{/admin}" style="color:white;">Admin</a>
+        </div>
+        <div class="right">
+            <form th:action="@{/logout}" method="post" style="margin:0;">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit" class="btn secondary" style="color:white;border:1px solid rgba(255,255,255,.6);border-radius:6px;">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h1>Student Management</h1>
+            <div style="margin-bottom:12px;">
+                <a th:href="@{/admin/students/new}" class="btn primary">Add Student</a>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Sex</th>
+                        <th>Email</th>
+                        <th>Score</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student : ${students}">
+                        <td th:text="${student.id}"></td>
+                        <td th:text="${student.name}"></td>
+                        <td th:text="${student.sex}"></td>
+                        <td th:text="${student.email}"></td>
+                        <td th:text="${student.score}"></td>
+                        <td>
+                            <a th:href="@{/admin/students/edit/{id}(id=${student.id})}" class="btn secondary">Edit</a>
+                            <a th:href="@{/admin/students/delete/{id}(id=${student.id})}" class="btn danger" style="margin-left:6px;">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer">&copy; <span th:text="${#dates.format(#dates.createNow(),'yyyy')}"></span> StudentApp</div>
+</body>
+</html>
+

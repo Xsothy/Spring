@@ -1,0 +1,19 @@
+/* Custom styles for the Refine app */
+.refine-dashboard {
+  padding: 24px;
+}
+
+/* Override Ant Design theme colors if needed */
+:root {
+  --refine-primary-color: #1890ff;
+}
+
+/* Custom card hover effects */
+.ant-card {
+  transition: all 0.3s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}

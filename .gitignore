@@ -33,3 +33,17 @@ build/
 .vscode/
 students.db
 startup.log
+
+### Node.js ###
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### Vite ###
+dist/
+.vite/
+vite.config.js.timestamp-*
+
+### Generated Frontend Assets ###
+src/main/resources/static/
